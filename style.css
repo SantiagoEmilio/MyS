@@ -1,0 +1,224 @@
+/* ========== RESET CSS ========== */
+
+* {
+  min-width: 0;
+  font: inherit;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img,
+video,
+svg {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* ========== VARIABLES RESPONSIVE ========== */
+
+:root {
+  --letter-width: 400px;
+  --letter-height: 200px;
+}
+
+/* ========== BODY ========== */
+
+body {
+  background-color: #fad7df;
+}
+
+/* ========== MAIN ========== */
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  justify-content: center;
+  align-items: center;
+  min-height: 100dvh;
+  padding: 1rem;
+}
+
+/* ========== CARTA ========== */
+
+.container-letter {
+  position: relative;
+}
+
+/* SOBRE (TAPA) */
+.cover {
+  position: absolute;
+  border-left: calc(var(--letter-width) / 2) solid transparent;
+  border-right: calc(var(--letter-width) / 2) solid transparent;
+  border-top: calc(var(--letter-height) / 2) solid #fe3334;
+  border-bottom: calc(var(--letter-height) / 2) solid transparent;
+
+  transition: transform 0.75s;
+  transform-origin: top;
+}
+
+/* HOJA */
+.paper {
+  position: absolute;
+  padding: 1.5rem;
+  line-height: 1.8rem;
+  right: 5px;
+  z-index: -1;
+  background: white;
+
+  width: calc(var(--letter-width) - 10px);
+  height: calc(var(--letter-height) - 20px);
+
+  transition: all 0.75s;
+}
+
+/* BASE DE LA CARTA */
+.letter {
+  border-left: calc(var(--letter-width) / 2) solid #ff989e;
+  border-right: calc(var(--letter-width) / 2) solid #ff989e;
+  border-top: calc(var(--letter-height) / 2) solid transparent;
+  border-bottom: calc(var(--letter-height) / 2) solid #ff858a;
+}
+
+/* ========== BOTONES ========== */
+
+.options {
+  display: flex;
+  gap: 5rem;
+}
+
+.options button {
+  color: #ff3234;
+  font-weight: 600;
+  border-radius: 5px;
+  background: #fad7df;
+  padding: 0.5rem 1.2rem;
+  border: 1px solid #fe3334;
+  cursor: pointer;
+}
+
+.options button:hover {
+  background: #ff989e;
+  color: white;
+}
+
+/* ========== ANIMACIONES ========== */
+
+.open-cover {
+  transform: rotateX(180deg);
+}
+
+.open-paper {
+  animation: openPaper 0.5s forwards;
+}
+
+@keyframes openPaper {
+  from {
+    top: 0;
+  }
+  to {
+    top: -120px;
+  }
+}
+
+.close-paper {
+  animation: closePaper 0.5s forwards;
+}
+
+@keyframes closePaper {
+  from {
+    top: -120px;
+  }
+  to {
+    top: 0;
+  }
+}
+
+/* ========== CORAZÓN ========== */
+
+.heart {
+  display: none;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 3rem;
+  color: #fe3334;
+  animation: crecer 1s forwards;
+}
+
+@keyframes crecer {
+  from {
+    scale: 1;
+    opacity: 1;
+  }
+  to {
+    scale: 3;
+    opacity: 0;
+  }
+}
+
+/* ========== 📱 CELULAR (iPhone) ========== */
+
+@media (max-width: 480px) {
+  :root {
+    --letter-width: 260px;
+    --letter-height: 140px;
+  }
+
+  .paper {
+    font-size: 0.85rem;
+    line-height: 1.4rem;
+  }
+
+  .options {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .heart {
+    font-size: 2.3rem;
+  }
+}
+
+/* ========== 📱 TABLET ========== */
+
+@media (min-width: 481px) and (max-width: 900px) {
+  :root {
+    --letter-width: 320px;
+    --letter-height: 170px;
+  }
+
+  .paper {
+    font-size: 0.95rem;
+  }
+}
+
+/* ========== 🖥️ MONITOR GRANDE ========== */
+
+@media (min-width: 1200px) {
+  :root {
+    --letter-width: 420px;
+    --letter-height: 220px;
+  }
+}
